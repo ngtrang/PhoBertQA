@@ -45,7 +45,8 @@ config.update({"device": args.device})
 config.update({"output_hidden_states": args.output_hidden_states})
 config = RobertaConfig.from_dict(config)
 
-rdrsegmenter = VnCoreNLP(address="http://127.0.0.1", port=9000)
+rdrsegmenter = VnCoreNLP(args.rdrsegmenter_path, annotators='wseg',max_heap_size='-Xmx500m')
+#VnCoreNLP(address="http://127.0.0.1", port=9000)
 
 vocab = Dictionary()
 vocab.add_from_file(args.dict_path)
